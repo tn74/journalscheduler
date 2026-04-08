@@ -22,17 +22,22 @@ class TestCLI(unittest.TestCase):
             f.write("1,Alice,Journal A,Journal B,\n")
             f.write("2, Bob , Journal B , ,\n")  # Test whitespace and empty cells
 
-        prefs, all_students = parse_students(self.students_csv)
-        
         alice = Student(1, "Alice")
         bob = Student(2, "Bob")
         
-        self.assertEqual(len(all_students), 2)
-        self.assertEqual(all_students[1], alice)
-        self.assertEqual(all_students[2], bob)
-        
-        self.assertEqual(prefs[alice], ["Journal A", "Journal B"])
-        self.assertEqual(prefs[bob], ["Journal B"])
+        self.assertEqual(
+            parse_students(self.students_csv),
+            (
+                {
+                    alice: ["Journal A", "Journal B"],
+                    bob: ["Journal B"]
+                },
+                {
+                    1: alice,
+                    2: bob
+                }
+            )
+        )
 
     def test_parse_journals(self):
         # Transposed representation
@@ -46,14 +51,13 @@ class TestCLI(unittest.TestCase):
         bob = Student(2, "Bob")
         all_students = {1: alice, 2: bob}
         
-        journals_dict = parse_journals(self.journals_csv, all_students)
-        
-        self.assertEqual(len(journals_dict), 2)
-        self.assertEqual(journals_dict["Journal A"].capacity, 2)
-        self.assertEqual(journals_dict["Journal A"].ranked_students, [bob, alice]) # Bob is ID 2, Alice is ID 1
-        
-        self.assertEqual(journals_dict["Journal B"].capacity, 1)
-        self.assertEqual(journals_dict["Journal B"].ranked_students, [alice])
+        self.assertEqual(
+            parse_journals(self.journals_csv, all_students),
+            {
+                "Journal A": Journal(capacity=2, ranked_students=[bob, alice]),
+                "Journal B": Journal(capacity=1, ranked_students=[alice])
+            }
+        )
 
     def test_write_results(self):
         alice = Student(1, "Alice")

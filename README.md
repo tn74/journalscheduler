@@ -2,6 +2,19 @@
 
 A command-line application that maps students to academic journals using the Gale-Shapley (Deferred Acceptance) stable matching algorithm. It mathematically guarantees a "stable match," ensuring fairness and preventing a student from being unfairly locked out of a journal if that journal prefers them over its current accepted candidates.
 
+## Installation
+
+**If you don't have Git**, you can download the code directly:
+1. Go to [https://github.com/tn74/journalscheduler](https://github.com/tn74/journalscheduler)
+2. Click the green **"<> Code"** button.
+3. Click **"Download ZIP"**.
+4. Extract the folder and open it in your terminal.
+
+If you prefer the terminal:
+```bash
+git clone https://github.com/tn74/journalscheduler
+```
+
 ## Usage
 
 You only need standard Python installed. Run the program by pointing it to your formatted CSV files:

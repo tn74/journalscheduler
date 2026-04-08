@@ -4,13 +4,9 @@ A command-line application that maps students to academic journals using the Gal
 
 ## Installation
 
-**If you don't have Git**, you can download the code directly:
-1. Go to [https://github.com/tn74/journalscheduler](https://github.com/tn74/journalscheduler)
-2. Click the green **"<> Code"** button.
-3. Click **"Download ZIP"**.
-4. Extract the folder and open it in your terminal.
+[**Click here**](https://github.com/tn74/journalscheduler/archive/refs/heads/main.zip) to directly download the code as a ZIP file! Extract the folder and open it in your terminal to get started.
 
-If you prefer the terminal:
+Alternatively, if you'd like to link the code using Git, you can clone the repository:
 ```bash
 git clone https://github.com/tn74/journalscheduler
 ```
@@ -24,6 +20,10 @@ python3 cli.py --students students.csv --journals journals.csv --out final_roste
 ```
 
 ## CSV Data Formats
+
+> [!TIP]
+> **Working in Excel or Google Sheets?**
+> You do not need to write these files by hand! Just set up your tables normally in your spreadsheet program, and then go to **File > Export / Download > Comma Separated Values (.csv)**.
 
 ### 1. `students.csv`
 This file lists each student and their ranked journal choices.
